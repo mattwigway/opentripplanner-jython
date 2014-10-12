@@ -1,4 +1,5 @@
 from org.opentripplanner.analyst import PointSet as OtpPointSet
+from PointFeature import PointFeature
 from java.io import File
 
 class PointSet:
@@ -37,5 +38,4 @@ class PointSet:
         return self._pointSet.featureCount()
 
     def __getitem__(self, i):
-        f = self._pointSet.getFeature(i)
-        return (f.lat, f.lon)
+        return PointFeature(self._pointSet.getFeature(i))
