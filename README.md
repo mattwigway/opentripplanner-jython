@@ -1,4 +1,4 @@
-# OpenTripPlanner.py: OpenTripPlanner bindings for Python
+# OpenTripPlanner-Jython: OpenTripPlanner bindings for Jython
 
 This is a library to allow the use of the open-source [OpenTripPlanner](http://www.opentripplanner.org) journey planning engine from within Python (or, more specifically, Jython). The library is intended to allow low-level access to OTP internals from Python; if you just want to retrieve journey plans, you'd probably be better off spinning up an OTP instance directly, and then hitting its HTTP interface and processing the resultant XML or JSON.
 
