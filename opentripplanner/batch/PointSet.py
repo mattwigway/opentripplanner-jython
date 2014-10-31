@@ -29,10 +29,19 @@ class PointSet:
 
         if fmt == 'csv':
             self._pointSet = OtpPointSet.fromCsv(File(infile))
-        
+
         elif fmt == 'shapefile' or fmt == 'shp':
             self._pointSet = OtpPointSet.fromShapefile(File(infile))
 
+        self._samples = dict()
+
+    def link(self, graph):
+        "Link points to the specified graph. This is used only for destinations; origins are linked automatically."
+
+        graphId = graph.getId()
+
+        # force re-link always, don't check if already linked
+        self._samples[graphId] = self._pointSet.getSampleSet(graph._graph)
 
     def __len__(self):
         return self._pointSet.featureCount()

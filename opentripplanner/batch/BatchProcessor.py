@@ -138,7 +138,12 @@ class BatchProcessor:
 
         mat = Matrix(len(self._origins), len(destinations))
 
-        destSamples = destinations._pointSet.getSampleSet(self._graph._graph)
+        graphId = self._graph.getId()
+
+        if not destinations._samples.has_key(graphId):
+            destinations.link(self._graph)
+
+        destSamples = destinations._samples[graphId]
 
         for i in xrange(len(self._origins)):
             mat.setRow(i, destSamples.eval(self.results[i]))

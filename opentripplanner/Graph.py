@@ -31,3 +31,6 @@ class Graph:
         else:
             # We're wrapping a graph
             self._graph = graph
+
+    def getId(self):
+        return '%s_%s' % (self._graph.routerId, id(self))
