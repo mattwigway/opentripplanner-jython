@@ -50,7 +50,7 @@ if __name__ == '__main__':
     m.setRow(2, array('i', range(10, 15)))
 
     if not m.getCol(0)[3] == 3 or not m.getCol(2)[2] == 12:
-        print 'FAIL columns mapped incorrectly
+        print 'FAIL columns mapped incorrectly'
 
     m.set(4, 4, 82)
 
