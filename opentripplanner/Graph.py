@@ -1,5 +1,7 @@
 import os.path
-from GraphService import GraphService
+from org.opentripplanner.routing.impl import InputStreamGraphSource
+from java.io import File
+from org.opentripplanner.routing.graph.Graph import LoadLevel
 
 class Graph:
     """Represents an OpenTripPlanner graph"""
@@ -18,16 +20,14 @@ class Graph:
 
             if os.path.isdir(graph):
                 path = graph
-                routerId = None
 
             else:
                 # must be a file
                 path = os.path.dirname(graph)
-                routerId = os.path.basename(graph)
 
-            self._graphService = GraphService(path)
-            self._graph = self._graphService._getGraph(routerId)
-
+            isgs = InputStreamGraphSource.newFileGraphSource(None, File(path), LoadLevel.FULL)
+            self._graph = isgs.getGraph()
+            
         else:
             # We're wrapping a graph
             self._graph = graph
