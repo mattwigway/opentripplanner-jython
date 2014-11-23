@@ -102,7 +102,7 @@ class BatchProcessor:
                 # this is important
                 options.batch = True
                 orig = origins[origin]
-                options.setFrom(orig.lat, orig.lon)
+                options.setFrom(orig.getLat(), orig.getLon())
                 options.setGraph(graph)
 
                 # now we should not need a lock anymore
