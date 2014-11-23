@@ -27,7 +27,10 @@ class Graph:
 
             isgs = InputStreamGraphSource.newFileGraphSource(None, File(path), LoadLevel.FULL)
             self._graph = isgs.getGraph()
-            
+
+            # workaround for not having any graph service
+            self._graph.routerId = hex(id(self))
+
         else:
             # We're wrapping a graph
             self._graph = graph
