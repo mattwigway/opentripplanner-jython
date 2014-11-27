@@ -35,6 +35,14 @@ class Matrix:
 
         return ret
 
+    # Return this matrix as a two-dimensional list
+    # This is useful for serializing to JSON and passing to CPython, because this list can be passed directly to
+    # numpy.matrix
+    # Don't try to pickle it, as teh Jython and CPython pickle modules are silently incompatible: you will get
+    # data but the numbers will be incorrect.
+    def asList(self):
+        return [[j for j in self.getRow(i)] for i in xrange(self.rows)]
+
 if __name__ == '__main__':
     # automated test
     m = Matrix(5, 5)
